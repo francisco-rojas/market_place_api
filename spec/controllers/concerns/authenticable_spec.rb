@@ -34,6 +34,29 @@ describe Authenticable, type: :controller do
     it 'returns unauthorized status' do
       expect(authentication.authenticate_with_token![:status]).to eq :unauthorized
     end
+  end
 
+  describe "#user_signed_in?" do
+    context "when there is a user on 'session'" do
+      before do
+        @user = FactoryGirl.create :user
+        authentication.stub(:current_user).and_return(@user)
+      end
+
+      subject { authentication }
+
+      it { should be_user_signed_in }
+    end
+
+    context "when there is no user on 'session'" do
+      before do
+        @user = FactoryGirl.create :user
+        authentication.stub(:current_user).and_return(nil)
+      end
+
+      subject { authentication }
+
+      it { should_not be_user_signed_in }
+    end
   end
 end
