@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :auth_token, uniqueness: true
+  has_many :products
 
   before_create :generate_authentication_token!
 
