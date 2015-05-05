@@ -42,6 +42,8 @@ describe User do
     end
 
     it "destroys the associated products on self destruct" do
+      # Notice that thanks to the foreign key constraint defined with cascade option
+      # there is no need to add the dependent: :destroy option to the association
       products = @user.products
       @user.destroy
       products.each do |product|
