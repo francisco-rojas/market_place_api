@@ -47,7 +47,7 @@ describe User do
       products = @user.products
       @user.destroy
       products.each do |product|
-        expect(Product.find(product)).to raise_error ActiveRecord::RecordNotFound
+        expect{ Product.find(product.id) }.to raise_error ActiveRecord::RecordNotFound
       end
     end
   end
