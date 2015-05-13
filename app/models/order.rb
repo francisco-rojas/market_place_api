@@ -7,6 +7,7 @@ class Order < ActiveRecord::Base
   before_validation :set_total!
 
   def set_total!
+    # self.total = products.inject(0) { |sum, product| sum + product.price }
     self.total = products.map(&:price).sum
   end
 end
