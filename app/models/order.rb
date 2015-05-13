@@ -5,6 +5,7 @@ class Order < ActiveRecord::Base
 
   validates :user_id, presence: true
   before_validation :set_total!
+  validates_with EnoughProductsValidator
 
   def set_total!
     # self.total = products.inject(0) { |sum, product| sum + product.price }
