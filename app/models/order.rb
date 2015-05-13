@@ -13,7 +13,7 @@ class Order < ActiveRecord::Base
 
   def build_placements_with_product_ids_and_quantities(product_ids_and_quantities)
     product_ids_and_quantities.each do |id, quantity|
-      self.placements.build(product_id: id)
+      self.placements.build(product_id: id, quantity: quantity)
     end
   end
 end
