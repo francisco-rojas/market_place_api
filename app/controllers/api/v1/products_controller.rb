@@ -1,13 +1,17 @@
 class Api::V1::ProductsController < ApplicationController
   respond_to :json
-  before_action :authenticate_with_token!, only: [:create, :update]
+  before_action :authenticate_with_token!, only: [:create, :update, :destroy]
 
   def show
     respond_with Product.find(params[:id])
   end
 
   def index
-    respond_with Product.search(params)
+    products = Product.search(params).page(params[:page]).per(params[:per_page])
+    render json: products, meta: { pagination:
+                                       { per_page: params[:per_page],
+                                         total_pages: products.total_pages,
+                                         total_objects: products.total_count } }
   end
 
   def create
