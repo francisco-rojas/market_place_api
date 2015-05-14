@@ -4,7 +4,7 @@ class Api::V1::OrdersController < ApplicationController
 
   def index
     orders = current_user.orders.page(params[:page]).per(params[:per_page])
-    render json: orders, meta: pagination(orders, params[:per_page])
+    render json: orders, meta: pagination(orders, params[:per_page], params[:page])
   end
 
   def show
@@ -17,7 +17,8 @@ class Api::V1::OrdersController < ApplicationController
 
     if order.save
       order.reload
-      OrderMailer.send_confirmation(order).deliver
+      # https://blog.engineyard.com/2014/getting-started-with-active-job
+      OrderMailer.send_confirmation(order).deliver_later!(wait: 10.seconds)
       render json: order, status: 201, location: [:api, current_user, order]
     else
       render json: { errors: order.errors }, status: 422

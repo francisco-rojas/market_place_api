@@ -6,7 +6,7 @@ class CreatePlacements < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :placements, :orders
-    add_foreign_key :placements, :products
+    add_foreign_key :placements, :orders, dependent: :delete
+    add_foreign_key :placements, :products, dependent: :delete
   end
 end

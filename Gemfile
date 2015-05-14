@@ -27,6 +27,10 @@ gem 'devise'
 # Use Unicorn as the app server
 gem 'unicorn'
 
+# background jobs
+gem 'resque-scheduler'
+gem 'resque'
+gem 'redis'
 
 #Api gems
 gem 'active_model_serializers', git: 'git@github.com:rails-api/active_model_serializers.git', branch: '0-8-stable'
