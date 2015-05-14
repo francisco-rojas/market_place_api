@@ -42,7 +42,6 @@ describe Api::V1::ProductsController do
         end
       end
 
-      # we added this lines for the pagination
       it { expect(json_response).to have_key(:meta) }
       it { expect(json_response[:meta]).to have_key(:pagination) }
       it { expect(json_response[:meta][:pagination]).to have_key(:per_page) }
@@ -67,7 +66,7 @@ describe Api::V1::ProductsController do
       end
 
       it { should respond_with 200 }
-      
+
     end
 
   end
