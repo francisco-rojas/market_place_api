@@ -7,7 +7,7 @@ Outstanding Questions:
 * API Authentication (OAuth vs Token Auth)
 * Rate Limit
 * Performance & Optimization (pretty print, gzip)
-* HTTP Caching
+* HTTP Caching (nginx reverse proxy cache, redis LRU cache)
 * API Authorization
 * Pagination (link header)
 * Search
@@ -45,3 +45,4 @@ curl -H 'Accept: application/vnd.marketplace.v1' \
 * https://devcenter.heroku.com/articles/http-caching-ruby-rails
 * https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=en
 * http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#snake-vs-camel
+* http://hawkins.io/2012/07/advanced_caching_part_1-caching_strategies/
