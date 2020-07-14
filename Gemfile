@@ -36,12 +36,13 @@ gem 'redis'
 gem 'active_model_serializers', git: 'git@github.com:rails-api/active_model_serializers.git', branch: '0-8-stable'
 gem 'kaminari'
 
+gem 'rack-cache'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'byebug'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
   gem 'better_errors'
   gem 'binding_of_caller'
   # Access an IRB console on exception pages or by using <%= console %> in views
